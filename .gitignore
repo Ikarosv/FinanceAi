@@ -1,0 +1,65 @@
+# =============================================
+#   .gitignore — Mini Sistema Financeiro
+#   O que NÃO deve subir para o GitHub
+# =============================================
+
+
+# --- Banco de Dados ---
+# O arquivo .db é gerado automaticamente ao rodar o projeto
+# NÃO sobe para o GitHub (cada usuário terá o seu próprio)
+*.db
+*.sqlite
+*.sqlite3
+
+# Mas a PASTA database/ precisa existir no repo (com connection.py)
+# então vamos manter um arquivo .gitkeep lá se necessário
+
+
+# --- Python ---
+# Arquivos gerados pelo interpretador Python, não precisam versionar
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Ambientes virtuais — dependências ficam no requirements.txt
+venv/
+.venv/
+env/
+.env/
+
+# Arquivo de variáveis de ambiente (senhas, chaves de API)
+.env
+.env.local
+
+# Distribuição / build
+dist/
+build/
+*.egg-info/
+*.egg
+
+
+# --- IDEs e Editores ---
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebooks (checkpoints)
+.ipynb_checkpoints/
+
+
+# --- Sistema Operacional ---
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+
+# --- Logs ---
+*.log
+logs/
