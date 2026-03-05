@@ -1,0 +1,8 @@
+name: auth
+values:
+  - key: password
+    value: ''
+    enabled: true
+  - key: email
+    value: ikarovieiraa@gmail.com
+    enabled: true
