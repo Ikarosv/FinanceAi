@@ -20,17 +20,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIROMENT = environ.get('ENVIROMENT', 'development')
 if ENVIROMENT == 'development':
     CORS_ALLOW_ALL_ORIGINS = True
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
+else:
+    CORS_ALLOWED_ORIGINS = [
+    ]
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c-ubz!-8skz_sx4#50^uufb60fn)di!7c%4oom-(urv&xca$^h'
+SECRET_KEY = environ.get('SECRET_KEY', 'your-secret-key')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

@@ -21,8 +21,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+from apps.users.views import RegisterView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Rota para registrar um novo usuário
+    path('api/register/', RegisterView.as_view(), name='auth_register'),
     # Rota para pegar o Token (Login)
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # Rota para renovar o Token (Refresh)
