@@ -1,4 +1,13 @@
 $kind: http-request
-url: http://
-method: GET
+url: http://localhost:8000/api/token/
+method: POST
+body:
+  type: formdata
+  content:
+    - type: text
+      key: email
+      value: "{{email}}"
+    - type: text
+      key: password
+      value: "{{password}}"
 order: 1000
