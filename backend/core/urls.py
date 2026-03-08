@@ -31,4 +31,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # Rota para renovar o Token (Refresh)
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/', include('apps.finance.urls')),  # Inclui as rotas da app finance
 ]
