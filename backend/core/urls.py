@@ -22,6 +22,8 @@ from rest_framework_simplejwt.views import (
 )
 
 from apps.users.views import RegisterView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,3 +35,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('apps.finance.urls')),  # Inclui as rotas da app finance
 ]
+
+if settings.DEBUG:
+    # Isso garante que o Django sirva os arquivos independente do prefixo
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

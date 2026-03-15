@@ -9,20 +9,23 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-from os import environ
+from os import environ, path as os_path
 from datetime import timedelta
 from pathlib import Path
+import dotenv
 
+dotenv.load_dotenv()  # Carrega as variáveis do arquivo .env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ENVIROMENT = environ.get('ENVIROMENT', 'development')
+
 if ENVIROMENT == 'development':
     CORS_ALLOW_ALL_ORIGINS = True
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = False
+    DEBUG = True
 else:
     CORS_ALLOWED_ORIGINS = [
     ]
@@ -41,6 +44,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -155,6 +159,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Pasta onde o 'collectstatic' vai jogar tudo
+# STATIC_ROOT = os_path.join(BASE_DIR, 'staticfiles')
+
+# Pasta onde VOCÊ coloca seus arquivos (como CSS customizado)
+STATICFILES_DIRS = [
+    os_path.join(BASE_DIR, 'static'),
+]
 
 # AUTH
 AUTH_USER_MODEL = 'users.User'

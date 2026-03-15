@@ -3,7 +3,10 @@ from rest_framework import viewsets, exceptions, permissions
 from .models import Category, Transaction
 from django.db.models import Q
 from .serializers import TransactionSerializer, CategorySerializer
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .ai_service import FinancialAI
 
 # Create your views here.
 
@@ -55,3 +58,11 @@ class TransactionViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # Garante que a transação seja salva vinculada ao usuário logado
         serializer.save(user=self.request.user)
+        
+class AIAnalysisView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        ai = FinancialAI()
+        analysis = ai.analyze_spending(request.user)
+        return Response({"analysis": analysis})
