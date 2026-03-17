@@ -1,65 +1,105 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,#214a48_0%,#102629_46%,#081315_100%)] px-6 py-10 text-stone-100">
+      <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between rounded-[2.5rem] border border-white/10 bg-white/5 p-6 shadow-[0_35px_120px_rgba(0,0,0,0.35)] backdrop-blur lg:p-10">
+        <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.5em] text-amber-200/80">
+              FinanceAI
+            </p>
+            <h1 className="mt-3 font-serif text-4xl font-semibold sm:text-5xl">
+              Seu painel financeiro com leitura inteligente dos gastos.
+            </h1>
+          </div>
+          <div className="flex gap-3">
+            <Link
+              href="/login"
+              className="rounded-full border border-white/20 px-5 py-3 text-sm font-medium transition hover:bg-white/10"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Entrar
+            </Link>
+            <Link
+              href="/register"
+              className="rounded-full bg-amber-200 px-5 py-3 text-sm font-medium text-slate-950 transition hover:bg-amber-100"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+              Criar conta
+            </Link>
+          </div>
+        </header>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div className="space-y-6">
+            <p className="max-w-2xl text-lg leading-8 text-stone-200">
+              Conecte cadastro, autenticação, categorias, transações e análise
+              por IA em um fluxo único. O painel mostra saldo, entradas, saídas,
+              lançamentos recentes e leitura crítica dos hábitos financeiros.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <FeatureCard
+                title="Autenticação JWT"
+                description="Login, cadastro e renovação de sessão conectados ao backend Django."
+              />
+              <FeatureCard
+                title="Operação diária"
+                description="Cadastre entradas, saídas e categorias pessoais sem sair do painel."
+              />
+              <FeatureCard
+                title="IA aplicada"
+                description="Gere uma leitura resumida dos gastos com base no seu histórico."
+              />
+            </div>
+          </div>
+
+          <div className="rounded-4xl bg-[#f6efe3] p-6 text-slate-950 shadow-[0_25px_80px_rgba(8,19,21,0.3)]">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#a36c2f]">
+              Visão do produto
+            </p>
+            <div className="mt-5 grid gap-4">
+              <InsightRow
+                label="Saldo em tempo real"
+                value="Entradas e saídas agregadas no dashboard"
+              />
+              <InsightRow
+                label="Categorias do sistema"
+                value="Separadas das categorias pessoais editáveis"
+              />
+              <InsightRow
+                label="Análise acionável"
+                value="Resumo textual com sugestão prática de economia"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function FeatureCard({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <article className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5">
+      <h2 className="font-serif text-2xl font-semibold">{title}</h2>
+      <p className="mt-3 text-sm leading-7 text-stone-300">{description}</p>
+    </article>
+  );
+}
+
+function InsightRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-[1.25rem] bg-white px-4 py-4 shadow-sm">
+      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+        {label}
+      </p>
+      <p className="mt-2 text-sm font-medium text-slate-700">{value}</p>
     </div>
   );
 }
