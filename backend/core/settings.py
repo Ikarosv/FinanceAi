@@ -17,18 +17,24 @@ import dotenv
 dotenv.load_dotenv()  # Carrega as variáveis do arquivo .env
 
 
+def split_env_list(value):
+    if not value:
+        return []
+    return [item.strip() for item in value.split(',') if item.strip()]
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ENVIROMENT = environ.get('ENVIROMENT', 'development')
+CORS_ALLOWED_ORIGINS = split_env_list(environ.get('CORS_ALLOWED_ORIGINS', ''))
+CSRF_TRUSTED_ORIGINS = split_env_list(environ.get('CSRF_TRUSTED_ORIGINS', ''))
 
 if ENVIROMENT == 'development':
     CORS_ALLOW_ALL_ORIGINS = True
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 else:
-    CORS_ALLOWED_ORIGINS = [
-    ]
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
 
