@@ -30,6 +30,7 @@ ENVIROMENT = environ.get('ENVIROMENT', 'development')
 CORS_ALLOWED_ORIGINS = split_env_list(environ.get('CORS_ALLOWED_ORIGINS', ''))
 ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
 CSRF_TRUSTED_ORIGINS = split_env_list(environ.get('CSRF_TRUSTED_ORIGINS', ''))
+CORS_ALLOW_CREDENTIALS = True
 
 if ENVIROMENT == 'development':
     CORS_ALLOW_ALL_ORIGINS = True
@@ -44,8 +45,6 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = environ.get('SECRET_KEY', 'your-secret-key')
-
-ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,10 +65,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
