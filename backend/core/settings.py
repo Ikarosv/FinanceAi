@@ -28,6 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 ENVIROMENT = environ.get('ENVIROMENT', 'development')
 CORS_ALLOWED_ORIGINS = split_env_list(environ.get('CORS_ALLOWED_ORIGINS', ''))
+ALLOWED_HOSTS = ['.vercel.app', 'now.sh', '127.0.0.1', 'localhost']
 CSRF_TRUSTED_ORIGINS = split_env_list(environ.get('CSRF_TRUSTED_ORIGINS', ''))
 
 if ENVIROMENT == 'development':
