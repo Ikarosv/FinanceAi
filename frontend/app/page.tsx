@@ -13,7 +13,7 @@ export default function Home() {
               Seu painel financeiro com leitura inteligente dos gastos.
             </h1>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 shrink-0">
             <Link
               href="/login"
               className="rounded-full border border-white/20 px-5 py-3 text-sm font-medium transition hover:bg-white/10"
