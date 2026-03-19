@@ -72,13 +72,13 @@ A sua API estará agora disponível e a escutar pedidos em `http://127.0.0.1:800
 
 Todas as rotas (exceto registo e login) exigem a passagem do `access_token` no cabeçalho `Authorization: Bearer <token>`.
 
-| Rota HTTP                    | Método          | Descrição                                     |
-| ---------------------------- | --------------- | --------------------------------------------- |
-| `/api/auth/token/`           | `POST`          | Obter par de tokens (Access/Refresh)          |
-| `/api/auth/register/`        | `POST`          | Registar um novo usuário                      |
-| `/api/finance/categories/`   | `GET`, `POST`   | Listar as globais/pessoais e criar novas      |
-| `/api/finance/transactions/` | `CRUD completo` | Listar, criar, editar e apagar transações     |
-| `/api/finance/ai-analysis/`  | `GET`           | Acionar a IA para analisar o padrão de gastos |
+| Rota HTTP             | Método          | Descrição                                     |
+| --------------------- | --------------- | --------------------------------------------- |
+| `/api/auth/token/`    | `POST`          | Obter par de tokens (Access/Refresh)          |
+| `/api/auth/register/` | `POST`          | Registar um novo usuário                      |
+| `/api/categories/`    | `GET`, `POST`   | Listar as globais/pessoais e criar novas      |
+| `/api/transactions/`  | `CRUD completo` | Listar, criar, editar e apagar transações     |
+| `/api/ai-analysis/`   | `GET`           | Acionar a IA para analisar o padrão de gastos |
 
 ## 🎨 Arquivos Estáticos e Interface de Administração
 
